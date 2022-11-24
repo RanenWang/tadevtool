@@ -32,7 +32,7 @@ export default new Router({
           component: Home
         },
         {
-          path:'sqlcreate',
+          path: 'sqlcreate',
           component: Sqlcreate
         }
       ]

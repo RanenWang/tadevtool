@@ -1,3 +1,3 @@
 <template>
-    <div>404 页面找不到了！！！</div>
+    <div><el-empty description="404 页面丢失啦！"></el-empty></div>
 </template>

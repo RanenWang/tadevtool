@@ -108,7 +108,7 @@ export default {
         tablenum: 16,
         dbName: 'fund60trans',
         tableName: 'tbfundtatransreq',
-        fieldStr: '',
+        fieldStr: 't.table_index, ',
         whereStr: 'where t.table_index = \'1\'',
         type: 'select',
         result: ''
@@ -177,10 +177,7 @@ export default {
   line-height: 1.5;
   padding: 5px;
   border: 1px solid #e1e1e1;
-  border-bottom-right-radius:0.5em;
-  border-bottom-left-radius:0.5em;
-  border-top-right-radius:0.5em;
-  border-top-left-radius:0.5em;
+  border-radius: 0.3em;
 
   /*border-style: groove;*/
 }

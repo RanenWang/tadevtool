@@ -4,17 +4,21 @@ import Main from '@/components/Main'
 import Setting from '@/components/setting/Setting'
 import Home from '@/components/home/Home'
 import Sqlcreate from '@/components/sqlcreate/Sqlcreate'
-import { name } from 'file-loader'
+import About from "../components/about/About";
+import {name} from 'file-loader'
+
 Vue.use(Router)
 // 保存原来的push方法
-const  originPush = Router.prototype.push;
+const originPush = Router.prototype.push;
 
-Router.prototype.push = function(location,resolve,reject){
-    if(resolve && reject){
-        originPush.call(this,location,resolve,reject)
-    } else{
-        originPush.call(this,location,() =>{},()=> {})
-    }
+Router.prototype.push = function (location, resolve, reject) {
+  if (resolve && reject) {
+    originPush.call(this, location, resolve, reject)
+  } else {
+    originPush.call(this, location, () => {
+    }, () => {
+    })
+  }
 }
 export default new Router({
   routes: [
@@ -22,18 +26,21 @@ export default new Router({
       path: '/',
       name: 'Main',
       component: Main,
-      children:[
+      children: [
         {
-          path:'setting',
+          path: 'setting',
           component: Setting
         },
         {
-          path:'home',
+          path: 'home',
           component: Home
         },
         {
           path: 'sqlcreate',
           component: Sqlcreate
+        }, {
+          path: 'about',
+          component: About
         }
       ]
     },

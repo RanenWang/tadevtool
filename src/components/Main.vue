@@ -61,10 +61,24 @@
         </el-menu>
       </el-aside>
 
-      <el-container style="margin:10px;background-color: white;box-shadow: 0px 10px 10px;
-      border-radius: 0.3em;">
-        <el-main style="border: 1px #111;">
-          <router-view/>
+      <el-container style="margin-left:8px;background-color: white;box-shadow: 0px 10px 10px;">
+        <el-main style="border: 1px #111; padding: 0px;">
+          <el-tabs
+            v-model="activeIndex"
+            type="card"
+            @tab-remove="removeTab"
+            @tab-click="clickTab"
+          >
+            <el-tab-pane
+              :key="item.name"
+              v-for="item in openTab"
+              :label="item.title"
+              :name="item.name"
+              :closable="item.closable"
+            >
+              <router-view></router-view>
+            </el-tab-pane>
+          </el-tabs>
         </el-main>
       </el-container>
     </el-container>
@@ -115,6 +129,37 @@ export default {
     return {
       background: bg,
       isCollapse: false,
+      activeIndex: '/home',
+      openTab: [
+        {
+          title: '首页',
+          name: '/home',
+          closable: false
+        }
+      ]
+    }
+  },
+  watch: {
+    $route(to, form) {
+      var flag = false;
+      // 当前页面菜单已打开
+      for (let i = 0; i < this.openTab.length; i++) {
+        if (to.path == this.openTab[i].name) {
+          this.activeIndex = this.openTab[i].name;
+          flag = true;
+          break;
+        }
+      }
+      // 打开新的页面
+      if (!flag) {
+        let obj = {
+          title: to.meta.title,
+          name: to.path,
+          closable: true
+        };
+        this.activeIndex = to.path;
+        this.openTab.push(obj);
+      }
     }
   },
   methods: {
@@ -125,6 +170,34 @@ export default {
     handleOpen() {
       this.isCollapse = !this.isCollapse;
     },
+    clickTab(tab) {
+      this.activeIndex = tab.paneName;
+      this.$router.push({ path: this.activeIndex });
+    },
+    removeTab(target) {
+      // 删除的是当前选中的页面
+      if (this.activeIndex === target) {
+        this.openTab.forEach((item, index) => {
+          if (item.name == target) {
+            let nextTab = item[index + 1] || item[index - 1];
+            if (nextTab) {
+              this.activeIndex = nextTab.name;
+            }
+          }
+        });
+      }
+      var i = 0;
+      this.openTab.forEach((item, index) => {
+        if (item.name == target) {
+          // eslint-disable-next-line no-return-assign
+          return (i = index);
+        }
+      });
+      this.openTab.splice(i, 1);
+
+      // 更新路由
+      this.$router.push({ path: this.openTab[this.openTab.length - 1].name });
+    }
   }
 };
 </script>

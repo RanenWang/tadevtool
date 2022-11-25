@@ -1,6 +1,6 @@
 <template>
 <!--  v-model="activeName" @tab-click="handleClick"-->
-  <el-tabs >
+  <el-tabs style="padding-left: 10px;" >
     <el-tab-pane label="申请数据" name="requestData"><RequestInterfaceRead/></el-tab-pane>
     <el-tab-pane label="行情" name="fundData"><FundInterfaceRead/></el-tab-pane>
     <el-tab-pane label="清算数据" name="liquidationData"><LiquidationInterfaceRead/></el-tab-pane>

@@ -29,20 +29,40 @@ export default new Router({
       component: Main,
       children: [
         {
+          meta: {
+            name: 'setting',
+            title: '设置',
+          },
           path: 'setting',
           component: Setting
         },
         {
+          meta: {
+            name: 'home',
+            title: '首页',
+          },
           path: 'home',
           component: Home
         },
         {
+          meta: {
+            name: 'sqlcreate',
+            title: '语句创建',
+          },
           path: 'sqlcreate',
           component: Sqlcreate
         }, {
+          meta: {
+            name: 'about',
+            title: '关于',
+          },
           path: 'about',
           component: About
         },{
+          meta: {
+            name: 'interfaceread',
+            title: '接口阅读器',
+          },
           path: 'interfaceread',
           component: InterfaceRead
         }

@@ -5,6 +5,7 @@ import Setting from '@/components/setting/Setting'
 import Home from '@/components/home/Home'
 import Sqlcreate from '@/components/sqlcreate/Sqlcreate'
 import About from "../components/about/About";
+import InterfaceRead from "../components/interfaceread/InterfaceRead";
 import {name} from 'file-loader'
 
 Vue.use(Router)
@@ -41,6 +42,9 @@ export default new Router({
         }, {
           path: 'about',
           component: About
+        },{
+          path: 'interfaceread',
+          component: InterfaceRead
         }
       ]
     },

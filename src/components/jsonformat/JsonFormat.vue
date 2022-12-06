@@ -3,6 +3,7 @@
   <el-container class="container-main">
     <el-col :span="11" class="container-main">
       <el-input
+        style="margin-left: 10px;"
         class="container-main"
         :rows=30
         type="textarea"
@@ -11,16 +12,23 @@
         v-model="jsonDataString">
       </el-input>
     </el-col>
-    <el-col :span="1"></el-col>
     <el-col :span="12">
-      <json-viewer
-        class="container-main"
-        :value="jsonData"
-        :expand-depth=200
-        copyable
-        expanded
+      <div style="height:100%;overflow:auto;border: 1px solid #e1e1e1;margin-left: 20px">
+<!--        <vue-json-pretty :data="jsonData"-->
+<!--                         highlightMouseoverNode-->
+<!--                         collapsedOnClickBrackets-->
+<!--                         showIcon-->
+<!--        />-->
+        <json-viewer
+          class="container-main"
+          :value="jsonData"
+          :expand-depth=200
+          copyable
 
-        boxed></json-viewer>
+          expanded>
+          </json-viewer>
+      </div>
+
     </el-col>
 
   </el-container>
@@ -30,8 +38,13 @@
 </template>
 
 <script>
+import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
 export default {
   name: "JsonFormat",
+  components:{
+    VueJsonPretty
+  },
   data() {
     return {
       jsonDataString: "",

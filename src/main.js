@@ -18,7 +18,7 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-// 后端端口
+// 后端端口 http://127.0.0.1:8088
 var url = 'http://127.0.0.1:8088';
 export default url;
 

@@ -139,7 +139,6 @@ export default {
       return highlight(code, languages.js);
     },
     onSubmit() {
-      console.log('生成成功!');
       this.$axios({
         url: url + '/sql/create',
         method: 'get',
@@ -160,6 +159,14 @@ export default {
         // todo
 
         this.code = res.data.data;
+        console.log('生成成功!');
+      }).catch(err=>{
+        console.log("接口调用异常:" + url + '/sql/create')
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示！',
+          message: h('i', { style: 'color: teal'}, "接口调用异常，请联系管理员")
+        });
       })
 
     }

@@ -131,11 +131,11 @@ export default {
       isCollapse: false,
       activeIndex: '/home',
       openTab: [
-        {
-          title: '首页',
-          name: '/home',
-          closable: false
-        }
+        // {
+        //   title: '首页',
+        //   name: '/home',
+        //   closable: false
+        // }
       ]
     }
   },
@@ -197,6 +197,46 @@ export default {
 
       // 更新路由
       this.$router.push({ path: this.openTab[this.openTab.length - 1].name });
+    }
+  },
+  mounted() {
+    // 监听页面加载前
+    window.addEventListener('beforeunload', e => {
+      sessionStorage.setItem(
+        'openTab',
+        JSON.stringify({
+          openTab: this.openTab.filter(
+            item => item.name != '/home'
+          ),
+          openTabPath: this.openTab.filter(
+            item => item.name !== '/home'
+          ),
+          currActiveTabs: this.activeIndex
+        })
+      );
+    });
+  },
+  created() {
+    this.openTab.push({
+      title: "首页",
+      name: "/home",
+      closable: false
+    })
+    this.$router.push({ path: this.openTab[this.openTab.length - 1].name });
+    console.log("推送了")
+    const sessionTab = JSON.parse(window.sessionStorage.getItem('openTab')) || '';
+    if (sessionTab) {
+      if (sessionTab.openTab.length != 0 && sessionTab.openTabPath.length != 0) {
+        for (let i = 0; i < sessionTab.openTab.length; i++) {
+          this.openTab.push({
+            title: sessionTab.openTab[i].title,
+            name: sessionTab.openTab[i].name,
+            closable: true
+          });
+        }
+        this.activeIndex = sessionTab.currActiveTabs;
+        this.$router.push({ path: this.activeIndex });
+      }
     }
   }
 };

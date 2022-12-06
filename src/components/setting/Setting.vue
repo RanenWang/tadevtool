@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div>敬请期待…… {{ ttt }}</div>
-    <div>
+  <div class="container-main">
+    <div style="height: 100%">敬请期待…… {{ ttt }}</div>
+    <div style="height: 100%">
       <el-button type="primary" @click="onSubmit">主要按钮</el-button>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div><el-empty description="申请数据读取子页面,正在开发中"></el-empty></div>
+  <div style="padding-left: 10px; height: 100%" ><el-empty description="申请数据读取子页面,正在开发中"></el-empty></div>
 </template>
 
 <script>

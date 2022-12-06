@@ -34,7 +34,7 @@
           <el-menu-item index="home"><i class="el-icon-s-home"></i><span>首页</span></el-menu-item>
 
           <el-submenu index="1">
-            <template slot="title">
+            <template slot="title" style="float: left">
               <i class="el-icon-s-cooperation"></i><span>文件接口</span></template>
             <el-menu-item index="interfaceread">接口阅读器</el-menu-item>
             <el-menu-item index="interfacemock">接口数据mock</el-menu-item>
@@ -49,8 +49,9 @@
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">
-            <template slot="title"><i class="el-icon-s-claim"></i><span>语句生成</span></template>
+            <template slot="title"><i class="el-icon-s-claim"></i><span>小工具</span></template>
             <el-menu-item index="sqlcreate">分表语句生成</el-menu-item>
+            <el-menu-item index="jsonformat">json美化</el-menu-item>
           </el-submenu>
 
           <el-submenu index="4">
@@ -61,26 +62,26 @@
         </el-menu>
       </el-aside>
 
-      <el-container style="margin-left:8px;background-color: white;box-shadow: 0px 10px 10px;">
-        <el-main style="border: 1px #111; padding: 0px;">
+        <el-main style=" padding: 0px;background-color: white;margin-left:8px;box-shadow: 0px 10px 10px;height: 100%">
           <el-tabs
+
             v-model="activeIndex"
             type="card"
             @tab-remove="removeTab"
             @tab-click="clickTab"
           >
             <el-tab-pane
+              style="height: 100%;"
               :key="item.name"
               v-for="item in openTab"
               :label="item.title"
               :name="item.name"
               :closable="item.closable"
             >
-              <router-view></router-view>
+                <router-view ></router-view>
             </el-tab-pane>
           </el-tabs>
         </el-main>
-      </el-container>
     </el-container>
   </el-container>
 
@@ -119,7 +120,12 @@ body, html, .parent {
   width: 200px;
   min-height: 400px;
 }
+
+.container-main {
+  height: calc(100vh - 140px) !important;
+}
 </style>
+
 
 <script>
 import bg from '../assets/imgs/homebg.jpg';

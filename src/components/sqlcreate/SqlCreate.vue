@@ -64,7 +64,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="24">
+        <el-col :span="23">
           <el-form-item label="生成结果">
             <prism-editor
               class="my-editor height-300"
@@ -73,17 +73,12 @@
               :highlight="highlighter"
               :line-numbers="lineNumbers"
             ></prism-editor>
-
-            <!--            <el-input-->
-            <!--              type="textarea"-->
-            <!--              rows='20'-->
-            <!--              placeholder=""-->
-            <!--              v-model="form.result">-->
-            <!--            </el-input>-->
           </el-form-item>
         </el-col>
       </el-row>
+
     </el-form>
+
   </el-container>
 </template>
 <script>

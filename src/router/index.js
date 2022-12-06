@@ -6,8 +6,10 @@ import Home from '@/components/home/Home'
 import Sqlcreate from '@/components/sqlcreate/Sqlcreate'
 import About from "../components/about/About";
 import InterfaceRead from "../components/interfaceread/InterfaceRead";
+import JsonFormat from "../components/jsonformat/JsonFormat";
 import {name} from 'file-loader'
-
+import JsonViewer from 'vue-json-viewer'
+Vue.use(JsonViewer)
 Vue.use(Router)
 // 保存原来的push方法
 const originPush = Router.prototype.push;
@@ -65,6 +67,14 @@ export default new Router({
           },
           path: 'interfaceread',
           component: InterfaceRead
+        },
+        {
+          meta: {
+            name: 'jsonformat',
+            title: 'Json美化',
+          },
+          path: 'jsonformat',
+          component: JsonFormat
         }
       ]
     },

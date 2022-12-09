@@ -1,6 +1,6 @@
 <template>
 
-  <el-container style="height: 100%;padding: 0;">
+  <el-container id="mainContainer" style="height: 100%;padding: 0;">
     <el-header style="text-align: right; font-size: 12px">
       <a style="float: left;" class="color-white">TA development tool</a>
       <el-tooltip class="item" effect="dark" content="点击此处，展开或收起" placement="top">
@@ -8,10 +8,12 @@
         margin-left: 10px;font-size:28px" class="el-icon-s-fold" @click="handleOpen"></i>
       </el-tooltip>
 
+      <screenfull id="screenfull" class="right-menu-item hover-effect" />
+
       <el-dropdown>
         <i class="el-icon-setting" style="margin-right: 15px;color: white"></i>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>查看</el-dropdown-item>
+          <el-dropdown-item @click.native="quanping">全屏</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <span>
@@ -62,7 +64,7 @@
         </el-menu>
       </el-aside>
 
-        <el-main style=" padding: 0px;background-color: white;margin-left:8px;box-shadow: 0px 10px 10px;height: 100%">
+        <el-main style=" padding: 0px;margin-left:8px; background: white;height: 100%">
           <el-tabs
 
             v-model="activeIndex"
@@ -71,7 +73,7 @@
             @tab-click="clickTab"
           >
             <el-tab-pane
-              style="height: 100%;"
+              style="padding-left:8px;padding-right:8px;padding-bottom:8px;"
               :key="item.name"
               v-for="item in openTab"
               :label="item.title"
@@ -110,38 +112,37 @@ body, html, .parent {
 }
 
 .el-menu {
-  border: none !important;
   padding: 0;
   height: 100%;
-  /* width: 200; */
 }
 
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
 }
-
-.container-main {
-  height: calc(100vh - 140px) !important;
+.el-tabs__content {
+  height: calc(100vh - 118px);
+  overflow-y: auto;
 }
+
 </style>
 
 
 <script>
 import bg from '../assets/imgs/homebg.jpg';
 
+import Screenfull from './Screenfull'
+
 export default {
+  components:{
+    Screenfull
+  },
   data() {
     return {
       background: bg,
       isCollapse: false,
       activeIndex: '/home',
       openTab: [
-        // {
-        //   title: '首页',
-        //   name: '/home',
-        //   closable: false
-        // }
       ]
     }
   },
@@ -229,7 +230,6 @@ export default {
       closable: false
     })
     this.$router.push({ path: this.openTab[this.openTab.length - 1].name });
-    console.log("推送了")
     const sessionTab = JSON.parse(window.sessionStorage.getItem('openTab')) || '';
     if (sessionTab) {
       if (sessionTab.openTab.length != 0 && sessionTab.openTabPath.length != 0) {

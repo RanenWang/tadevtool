@@ -2,7 +2,9 @@
   <el-carousel :height=height>
     <el-carousel-item v-for="item in list">
       <a :href=item.href>
-        <img :src="item.path" class="image">
+        <el-image
+          :src="item.path"
+          fit="fill"></el-image>
       </a>
     </el-carousel-item>
   </el-carousel>
@@ -10,18 +12,32 @@
 
 <script>
 // 咨询走马灯
+import url from "../../../main";
+
 export default {
   name: "InformationCarousel",
+  created() {
+    this.$axios({
+      url: url + '/home/information',
+      method: 'get',
+      headers: {
+        //请求头，可以将token放在这里
+      },
+      params: {
+        //需要传过去的参数
+      }
+    }).then(res => {
+      //res为后端传回来的数据
+      console.log(res.data.data)
+      this.list = res.data.data
+    })
+  },
   data() {
     return {
       list: [
         {
           "title": "test1",
-          "path": require("../../../assets/imgs/1.jpg"),
-          "href":"https://mp.weixin.qq.com/s?__biz=Mzg2Mzg4NzcwNg==&mid=2247483665&idx=1&sn=44c7f3fe753293e8f45150f657cffc3c&chksm=ce708924f90700328b40911c9eb0d1c13929d43c57b616d30d0af876760508bcf6ab76026a9e#rd"
-        }, {
-          "title": "test2",
-          "path": require("../../../assets/imgs/1.jpg"),
+          "path": require("../../../../static/demo/1.jpg"),
           "href":"https://mp.weixin.qq.com/s?__biz=Mzg2Mzg4NzcwNg==&mid=2247483665&idx=1&sn=44c7f3fe753293e8f45150f657cffc3c&chksm=ce708924f90700328b40911c9eb0d1c13929d43c57b616d30d0af876760508bcf6ab76026a9e#rd"
         }
       ]

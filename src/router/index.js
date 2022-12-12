@@ -8,9 +8,13 @@ import About from "../components/about/About";
 import InterfaceRead from "../components/interfaceread/InterfaceRead";
 import JsonFormat from "../components/jsonformat/JsonFormat";
 import JsonViewer from 'vue-json-viewer'
-
+import FundInterfaceRead from "../components/interfaceread/subpage/FundInterfaceRead";
+import RequestInterfaceRead from "../components/interfaceread/subpage/RequestInterfaceRead";
+import CentralizedBackup from "../components/interfaceread/subpage/CentralizedBackup";
+import ConfirmData from "../components/interfaceread/subpage/ConfirmData";
+import KfData from "../components/interfaceread/subpage/KfData";
+import LiquidationInterfaceRead from "../components/interfaceread/subpage/LiquidationInterfaceRead";
 Vue.use(JsonViewer)
-
 Vue.use(Router)
 // 保存原来的push方法
 const originPush = Router.prototype.push;
@@ -61,13 +65,60 @@ export default new Router({
           },
           path: 'about',
           component: About
-        },{
+        }, {
           meta: {
             name: 'interfaceread',
             title: '接口阅读器',
           },
           path: 'interfaceread',
           component: InterfaceRead
+        },
+        {
+          meta: {
+            name: 'requestInterfaceRead',
+            title: '申请数据',
+          },
+          path: 'requestInterfaceRead',
+          component: RequestInterfaceRead
+        },
+        {
+          meta: {
+            name: 'centralizedBackup',
+            title: '集中备份',
+          },
+          path: 'centralizedBackup',
+          component: CentralizedBackup
+        },{
+          meta: {
+            name: 'ConfirmData',
+            title: '确认数据',
+          },
+          path: 'confirmData',
+          component: ConfirmData
+        },
+        {
+          meta: {
+            name: 'FundInterfaceRead',
+            title: '行情数据',
+          },
+          path: 'fundInterfaceRead',
+          component: FundInterfaceRead
+        },
+        {
+          meta: {
+            name: 'KfData',
+            title: '客服数据',
+          },
+          path: 'kfdata',
+          component: KfData
+        },
+        {
+          meta: {
+            name: 'liquidationInterfaceRead',
+            title: '清算数据',
+          },
+          path: 'liquidationInterfaceRead',
+          component: LiquidationInterfaceRead
         },
         {
           meta: {

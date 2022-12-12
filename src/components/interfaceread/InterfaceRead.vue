@@ -1,5 +1,5 @@
 <template>
-    <el-tabs style="padding-left: 10px; height: 100%" type="">
+    <el-tabs style="padding-left: 10px; height: 100%" tab-position="top">
       <el-tab-pane label="申请数据" name="requestData" style="padding-left: 10px; height: 100%">
         <RequestInterfaceRead/>
       </el-tab-pane>

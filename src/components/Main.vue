@@ -8,7 +8,7 @@
         margin-left: 10px;font-size:28px" class="el-icon-s-fold" @click="handleOpen"></i>
       </el-tooltip>
 
-      <screenfull id="screenfull" class="right-menu-item hover-effect" />
+      <screenfull id="screenfull" class="right-menu-item hover-effect"/>
 
       <el-dropdown>
         <i class="el-icon-setting" style="margin-right: 15px;color: white"></i>
@@ -27,7 +27,8 @@
     <el-container style="background-color: rgb(238, 241, 246)">
       <el-aside
         style="background-color: rgb(238, 241, 246); height: 100%;padding: 0; width: auto; box-shadow: 0px 10px 10px;">
-        <el-menu :default-openeds="[]"
+        <el-menu
+          mode="vertical"
                  default-active="home"
                  class="el-menu-vertical"
                  :collapse="isCollapse"
@@ -36,10 +37,18 @@
           <el-menu-item index="home"><i class="el-icon-s-home"></i><span>首页</span></el-menu-item>
 
           <el-submenu index="1">
-            <template slot="title" style="float: left">
+            <template slot="title">
               <i class="el-icon-s-cooperation"></i><span>文件接口</span></template>
-            <el-menu-item index="interfaceread">接口阅读器</el-menu-item>
-            <el-menu-item index="interfacemock">接口数据mock</el-menu-item>
+            <el-submenu index="interfaceread">
+              <template slot="title" style="float: left">
+                <span>接口阅读器</span></template>
+              <el-menu-item index="liquidationInterfaceRead">会计清算</el-menu-item>
+              <el-menu-item index="kfdata">客服数据</el-menu-item>
+              <el-menu-item index="centralizedBackup">集中备份</el-menu-item>
+              <el-menu-item index="confirmData">确认数据</el-menu-item>
+              <el-menu-item index="fundInterfaceRead">行情接口</el-menu-item>
+              <el-menu-item index="requestInterfaceRead">申请数据</el-menu-item>
+            </el-submenu>
           </el-submenu>
 
 
@@ -64,26 +73,26 @@
         </el-menu>
       </el-aside>
 
-        <el-main style=" padding: 0px;margin-left:8px; background: white;height: 100%">
-          <el-tabs
+      <el-main style=" padding: 0px;margin-left:8px; background: #eee;height: 100%">
+        <el-tabs
 
-            v-model="activeIndex"
-            type="card"
-            @tab-remove="removeTab"
-            @tab-click="clickTab"
+          v-model="activeIndex"
+          type="card"
+          @tab-remove="removeTab"
+          @tab-click="clickTab"
+        >
+          <el-tab-pane
+            style="padding-left:8px;padding-right:8px;padding-bottom:8px;"
+            :key="item.name"
+            v-for="item in openTab"
+            :label="item.title"
+            :name="item.name"
+            :closable="item.closable"
           >
-            <el-tab-pane
-              style="padding-left:8px;padding-right:8px;padding-bottom:8px;"
-              :key="item.name"
-              v-for="item in openTab"
-              :label="item.title"
-              :name="item.name"
-              :closable="item.closable"
-            >
-                <router-view ></router-view>
-            </el-tab-pane>
-          </el-tabs>
-        </el-main>
+            <router-view></router-view>
+          </el-tab-pane>
+        </el-tabs>
+      </el-main>
     </el-container>
   </el-container>
 
@@ -92,9 +101,11 @@
 body, p {
   margin: 0;
 }
-.color-white{
+
+.color-white {
   color: white;
 }
+
 body, html, .parent {
   height: 100%;
 }
@@ -120,6 +131,7 @@ body, html, .parent {
   width: 200px;
   min-height: 400px;
 }
+
 .el-tabs__content {
   height: calc(100vh - 118px);
   overflow-y: auto;
@@ -131,10 +143,10 @@ body, html, .parent {
 <script>
 import bg from '../assets/imgs/homebg.jpg';
 
-import Screenfull from './Screenfull'
+import Screenfull from './components/Screenfull'
 
 export default {
-  components:{
+  components: {
     Screenfull
   },
   data() {
@@ -142,8 +154,7 @@ export default {
       background: bg,
       isCollapse: false,
       activeIndex: '/home',
-      openTab: [
-      ]
+      openTab: []
     }
   },
   watch: {
@@ -170,16 +181,16 @@ export default {
     }
   },
   methods: {
-    handleSelect(key,keyPath){
-        console.log(key,keyPath);
-        this.$router.push(key)
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+      this.$router.push(key)
     },
     handleOpen() {
       this.isCollapse = !this.isCollapse;
     },
     clickTab(tab) {
       this.activeIndex = tab.paneName;
-      this.$router.push({ path: this.activeIndex });
+      this.$router.push({path: this.activeIndex});
     },
     removeTab(target) {
       // 删除的是当前选中的页面
@@ -203,7 +214,7 @@ export default {
       this.openTab.splice(i, 1);
 
       // 更新路由
-      this.$router.push({ path: this.openTab[this.openTab.length - 1].name });
+      this.$router.push({path: this.openTab[this.openTab.length - 1].name});
     }
   },
   mounted() {
@@ -229,7 +240,7 @@ export default {
       name: "/home",
       closable: false
     })
-    this.$router.push({ path: this.openTab[this.openTab.length - 1].name });
+    this.$router.push({path: this.openTab[this.openTab.length - 1].name});
     const sessionTab = JSON.parse(window.sessionStorage.getItem('openTab')) || '';
     if (sessionTab) {
       if (sessionTab.openTab.length != 0 && sessionTab.openTabPath.length != 0) {
@@ -241,7 +252,7 @@ export default {
           });
         }
         this.activeIndex = sessionTab.currActiveTabs;
-        this.$router.push({ path: this.activeIndex });
+        this.$router.push({path: this.activeIndex});
       }
     }
   }

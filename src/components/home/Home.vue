@@ -1,41 +1,61 @@
 <template>
-  <div id="home">
-      <el-row :gutter="12">
-        <el-col :span="8">
-          <el-card shadow="always" style="height: 150px;">
-            我的常用
-            <div>一11</div>
-            <a href="#/interfaceread">interfaceread</a>
-          </el-card>
-        </el-col>
-        <el-col :span="8">
-          <el-card shadow="hover">
-            鼠标悬浮时显示
-          </el-card>
-        </el-col>
-        <el-col :span="8">
-          <el-card shadow="never">
-            从不显示
-          </el-card>
-        </el-col>
-      </el-row>
+  <div id="home" :style="cssVars">
+    <el-row :gutter="12">
+      <el-col :span="16">
+        <h1>TA头条</h1>
+        <el-card shadow="always">
+          <a href="#/interfaceread">interfaceread</a>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <h1>资讯</h1>
+        <el-card shadow="always">
+          <InformationCarousel :height=height></InformationCarousel>
+        </el-card>
+      </el-col>
+      <el-col :span="24">
+        <h1>我的常用</h1>
+        <el-card shadow="always">
+          <el-col :span="8">
+            <el-card shadow="always" style="height: 30px;">
+              从不显示
+            </el-card>
+          </el-col>
+
+        </el-card>
+      </el-col>
+
+    </el-row>
   </div>
 </template>
-<style>
-.el-image{
-  opacity:0.8;
+
+<style vars="{ --height }" scoped>
+.el-card {
+  height: var(--height);
+  border-radius: 18px;
 }
-#home{
-    height: 100%;
-}
+
 </style>
 <script>
-import bg from '../../assets/imgs/homebg.jpg';
+import InformationCarousel from "./comp/InformationCarousel";
+
+;
 export default {
-    data() {
-        return {
-            background: bg
-        }
-      }
+  components: {
+    InformationCarousel
+  },
+  data() {
+    return {
+      height: "250px"
+    }
+  },
+  computed: {
+    cssVars() {
+      return {
+        "--height": this.height
+      };
+    }
+  }
+
 }
 </script>

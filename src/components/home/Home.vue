@@ -1,48 +1,44 @@
 <template>
-  <div id="home" :style="cssVars">
+  <div id="home" >
     <el-row :gutter="12">
       <el-col :span="16">
-        <h1>TA头条</h1>
+        <h1 class="ta-title">TA头条</h1>
         <el-card shadow="always">
-          <a href="#/interfaceread">interfaceread</a>
+          <TouTiao :height=height />
         </el-card>
       </el-col>
       <el-col :span="8">
-        <h1>资讯</h1>
+        <h1 class="ta-title">资讯</h1>
         <el-card shadow="always">
-          <InformationCarousel :height=height></InformationCarousel>
+          <InformationCarousel :height=height />
         </el-card>
       </el-col>
       <el-col :span="24">
-        <h1>我的常用</h1>
+        <h1 class="ta-title">我的常用</h1>
         <el-card shadow="always">
           <el-col :span="8">
-            <el-card shadow="always" style="height: 30px;">
-              从不显示
-            </el-card>
           </el-col>
-
+          <el-card shadow="always">
+            <div style="height: 250px;"></div>
+          </el-card>
         </el-card>
       </el-col>
-
     </el-row>
   </div>
 </template>
 
-<style vars="{ --height }" scoped>
-.el-card {
-  height: var(--height);
-  border-radius: 18px;
-}
+<style  scoped>
+
 
 </style>
 <script>
 import InformationCarousel from "./comp/InformationCarousel";
+import TouTiao from "./comp/TouTiao";
 
-;
 export default {
   components: {
-    InformationCarousel
+    InformationCarousel,
+    TouTiao
   },
   data() {
     return {
@@ -50,11 +46,7 @@ export default {
     }
   },
   computed: {
-    cssVars() {
-      return {
-        "--height": this.height
-      };
-    }
+
   }
 
 }

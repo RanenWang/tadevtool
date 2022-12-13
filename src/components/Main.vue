@@ -1,11 +1,13 @@
 <template>
 
   <el-container id="mainContainer" style="height: 100%;padding: 0;">
-    <el-header style="text-align: right; font-size: 12px">
+    <el-header style="text-align: right; font-size: 12px" height="45px">
       <a style="float: left;" class="color-white">TA development tool</a>
       <el-tooltip class="item" effect="dark" content="点击此处，展开或收起" placement="top">
-        <i style="float: left;margin-top: 15px; color: #868686;
-        margin-left: 10px;font-size:28px" class="el-icon-s-fold" @click="handleOpen"></i>
+        <i
+          style="float: left; color: #fff; line-height: 45px;font-size:18px;margin-left: 10px;"
+          class="el-icon-s-fold"
+          @click="handleOpen"></i>
       </el-tooltip>
 
       <screenfull id="screenfull" class="right-menu-item hover-effect"/>
@@ -13,14 +15,13 @@
       <el-dropdown>
         <i class="el-icon-setting" style="margin-right: 15px;color: white"></i>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item @click.native="quanping">全屏</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <span>
-        <el-avatar :size="30" :src="background" style="vertical-align: middle;margin-right: 10px;"></el-avatar>
+        <el-avatar :size="24" :src="background" style="vertical-align: middle;margin-right: 10px;"/>
       </span>
 
-      <span class="color-white">wangpeng</span>
+      <span class="color-white">admin</span>
 
     </el-header>
     <!--    border-right:thick solid #ff0000;-->
@@ -29,10 +30,10 @@
         style="background-color: rgb(238, 241, 246); height: 100%;padding: 0; width: auto; box-shadow: 0px 10px 10px;">
         <el-menu
           mode="vertical"
-                 default-active="home"
-                 class="el-menu-vertical"
-                 :collapse="isCollapse"
-                 @select="handleSelect"
+          default-active="home"
+          class="el-menu-vertical"
+          :collapse="isCollapse"
+          @select="handleSelect"
         >
           <el-menu-item index="home"><i class="el-icon-s-home"></i><span>首页</span></el-menu-item>
 
@@ -73,7 +74,7 @@
         </el-menu>
       </el-aside>
 
-      <el-main style=" padding: 0px;margin-left:8px; background: #eee;height: 100%">
+      <el-main style=" padding: 0px;margin-left:8px; background: #fff;height: 100%">
         <el-tabs
 
           v-model="activeIndex"
@@ -112,13 +113,11 @@ body, html, .parent {
 
 .el-header {
   background-color: #193270;
-  color: #333;
-  line-height: 60px;
+  line-height: 45px;
 }
 
 .el-submenu .el-menu-item {
   padding-left: 45px !important;
-  text-align: left;
   padding: 0;
 }
 

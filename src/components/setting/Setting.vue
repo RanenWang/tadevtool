@@ -13,12 +13,12 @@ import url from '../../main'
 export default {
   data() {
     return {
-      ttt: this.HOST
+      ttt: "1111"
     }
   },
   methods: {
     onSubmit() {
-      this.$axios({
+      this.$http({
         url: url + '/sql/create',
         method: 'get',
         headers: {

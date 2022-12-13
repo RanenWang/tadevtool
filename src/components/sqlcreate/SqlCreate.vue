@@ -134,7 +134,7 @@ export default {
       return highlight(code, languages.js);
     },
     onSubmit() {
-      this.$axios({
+      this.$http({
         url: url + '/sql/create',
         method: 'get',
         headers: {},

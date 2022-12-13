@@ -1,53 +1,53 @@
 <template>
-  <div id="home" >
-    <el-row :gutter="12">
-      <el-col :span="16">
+  <div id="home">
+    <el-row :gutter="6">
+      <el-col :xs="24" :sm="14" :md="16" :lg="16" :xl="16">
         <h1 class="ta-title">TA头条</h1>
         <el-card shadow="always">
-          <TouTiao :height=height />
+          <TouTiao :height="height"/>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :xs="24" :sm="10" :md="8" :lg="8" :xl="8">
         <h1 class="ta-title">资讯</h1>
         <el-card shadow="always">
-          <InformationCarousel :height=height />
+          <InformationCarousel :height="height"/>
         </el-card>
       </el-col>
-      <el-col :span="24">
+
+
+      <el-col :xs="24" :lg="24">
         <h1 class="ta-title">我的常用</h1>
-        <el-card shadow="always">
-          <el-col :span="8">
-          </el-col>
-          <el-card shadow="always">
-            <div style="height: 250px;"></div>
-          </el-card>
-        </el-card>
+        <!--        <el-card shadow="always">-->
+
+          <CommonApp :height="appHeight"/>
+        <!--        </el-card>-->
       </el-col>
     </el-row>
   </div>
 </template>
 
-<style  scoped>
+<style scoped>
 
 
 </style>
 <script>
 import InformationCarousel from "./comp/InformationCarousel";
 import TouTiao from "./comp/TouTiao";
+import CommonApp from "./comp/CommonApp";
 
 export default {
   components: {
     InformationCarousel,
-    TouTiao
+    TouTiao,
+    CommonApp
   },
   data() {
     return {
-      height: "250px"
+      height: "250px",
+      appHeight: "50px"
     }
   },
-  computed: {
-
-  }
+  computed: {}
 
 }
 </script>

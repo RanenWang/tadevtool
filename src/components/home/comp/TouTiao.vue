@@ -22,7 +22,13 @@ export default {
   },
   data() {
     return {
-      list: []
+      list: [
+        {
+          "title": "loading",
+          "path": "",
+          "href":""
+        }
+      ]
     }
   },
   created() {

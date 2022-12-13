@@ -2,46 +2,42 @@
   <el-container style="width: 100%;">
     <el-form ref="form" :model="form" label-width="120px" size="mini" style="width: 100%;">
       <el-row>
-        <el-col :span="6">
+        <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
           <el-form-item label="分库数量">
             <el-input-number v-model="form.dbnum" controls-position="left" :min="1" :max="100"></el-input-number>
           </el-form-item>
         </el-col>
 
-        <el-col :span="6">
+        <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
           <el-form-item label="分表数量">
             <el-input-number v-model="form.tablenum" controls-position="left" :min="1" :max="100"></el-input-number>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="8">
+
+        <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
           <el-form-item label="数据库">
             <el-input type="input" controls-position="left" v-model="form.dbName" text="1"></el-input>
           </el-form-item>
         </el-col>
 
-        <el-col :span="8">
+        <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
           <el-form-item label="表名称">
             <el-input type="input" controls-position="left" v-model="form.tableName"></el-input>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="8">
+
+        <el-col :xs="24" :sm="18" :md="12" :lg="8" :xl="8">
           <el-form-item label="拼接字段">
             <el-input type="input" v-model="form.fieldStr"></el-input>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="12">
+
+        <el-col :xs="24" :sm="18" :md="20" :lg="22" :xl="12">
           <el-form-item label="拼接条件">
             <el-input type="textarea" :row="10" v-model="form.whereStr"></el-input>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
+
         <el-col :span="12">
           <el-form-item label="语句类型">
             <el-radio-group v-model="form.type" size="mini" @change="changeType">
@@ -52,9 +48,7 @@
             </el-radio-group>
           </el-form-item>
         </el-col>
-      </el-row>
 
-      <el-row>
         <el-col :span="12">
           <el-form-item>
             <el-tooltip class="item" effect="dark" content="点击此处，立刻生成分库分表语句" placement="top">
@@ -154,14 +148,14 @@ export default {
         // todo
 
         this.code = res.data.data;
+        this.$message({
+          message: '恭喜你，生成成功！',
+          type: 'success'
+        });
         console.log('生成成功!');
       }).catch(err=>{
         console.log("接口调用异常:" + url + '/sql/create')
-        const h = this.$createElement;
-        this.$notify({
-          title: '提示！',
-          message: h('i', { style: 'color: teal'}, "接口调用异常，请联系管理员")
-        });
+        this.$message.error('接口调用异常，请联系管理员');
       })
 
     }

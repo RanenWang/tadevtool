@@ -1,7 +1,6 @@
 <template>
-
-  <el-container id="mainContainer" style="height: 100%;padding: 0;">
-    <el-header style="text-align: right; font-size: 12px" height="45px">
+  <el-container id="mainContainer" style="height: 100%; ">
+    <el-header style="text-align: right; font-size: 12px;" height="45px">
       <a style="float: left;" class="color-white">TA development tool</a>
       <el-tooltip class="item" effect="dark" content="点击此处，展开或收起" placement="top">
         <i
@@ -18,17 +17,26 @@
         </el-dropdown-menu>
       </el-dropdown>
       <span>
+        <el-popover
+          placement="top-start"
+          title="标题"
+          width="200"
+          trigger="hover"
+          content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
         <el-avatar :size="24" :src="background" style="vertical-align: middle;margin-right: 10px;"/>
+        </el-popover>
       </span>
 
       <span class="color-white">admin</span>
 
     </el-header>
     <!--    border-right:thick solid #ff0000;-->
-    <el-container style="background-color: rgb(238, 241, 246)">
+<!--    <el-container style="background-color: rgb(238, 241, 246)">-->
+    <el-container id="mainCon" style="">
       <el-aside
-        style="background-color: rgb(238, 241, 246); height: 100%;padding: 0; width: auto; box-shadow: 0px 10px 10px;">
+        style=" height: 100%;width: auto; box-shadow: 0px 10px 10px;">
         <el-menu
+          style="background-color:#ffffff00;height: 50%"
           mode="vertical"
           default-active="home"
           class="el-menu-vertical"
@@ -74,7 +82,7 @@
         </el-menu>
       </el-aside>
 
-      <el-main style=" padding: 0px;margin-left:8px; background: #fff;height: 100%">
+      <el-main id="mainTab" style=" ">
         <el-tabs
 
           v-model="activeIndex"
@@ -99,12 +107,26 @@
 
 </template>
 <style>
+body{
+  background: url('../assets/imgs/homebg.jpg');
+
+}
+#mainTab{
+  padding: 0px;
+  margin-left:8px;
+  height: 100%;
+  box-shadow: 0px 10px 10px ;
+}
+#mainCon{
+  background-color:#ffffffaa;
+}
 body, p {
   margin: 0;
 }
 
 .color-white {
   color: white;
+
 }
 
 body, html, .parent {
@@ -135,6 +157,9 @@ body, html, .parent {
   height: calc(100vh - 118px);
   overflow-y: auto;
 }
+.mainContainer{
+  background: image(background);
+}
 
 </style>
 
@@ -151,7 +176,7 @@ export default {
   data() {
     return {
       background: bg,
-      isCollapse: false,
+      isCollapse: true,
       activeIndex: '/home',
       openTab: []
     }
@@ -185,6 +210,7 @@ export default {
       this.$router.push(key)
     },
     handleOpen() {
+      console.log(1)
       this.isCollapse = !this.isCollapse;
     },
     clickTab(tab) {

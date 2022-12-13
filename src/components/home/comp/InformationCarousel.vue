@@ -17,22 +17,35 @@
 export default {
   name: "InformationCarousel",
   method: {},
-  beforeMount() {
+  created() {
     console.log("组件初始化")
-    this.$http({
-      url: '/home/information',
-      method: 'get',
-    }).then(res => {
-      //res为后端传回来的数据
-      console.log(res.data.data)
-      console.log("解析")
+    try {
+      this.$http.get('/home/information'
+      ).then(res => {
+        //res为后端传回来的数据
+        console.log(res.data.data)
+        console.log("解析")
 
-      this.list = res.data.data
-    });
+        this.list = res.data.data
+      }).catch(function (error) {
+        console.log(error);
+      })
+        .finally(function () {
+          // 总是会执行
+        });
+    } catch (err) {
+      console.error(err.response.status);
+    }
   },
   data() {
     return {
-      list: []
+      list: [
+        {
+          "title": "loading",
+          "path": "",
+          "href":""
+        }
+      ]
     }
   },
   props: {
@@ -40,7 +53,7 @@ export default {
   }
 }
 </script>
-<style >
+<style>
 
 #title {
   text-decoration: none;

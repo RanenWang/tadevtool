@@ -1,14 +1,15 @@
 <template>
   <el-container id="mainContainer" style="height: 100%; ">
-    <el-header style="text-align: right; font-size: 12px;" height="45px">
+    <el-header height="45px">
+      <!--标题-->
       <a style="float: left;" class="color-white">TA development tool</a>
+      <!--展开或收起来-->
       <el-tooltip class="item" effect="dark" content="点击此处，展开或收起" placement="top">
-        <i
-          style="float: left; color: #fff; line-height: 45px;font-size:18px;margin-left: 10px;"
-          class="el-icon-s-fold"
-          @click="handleOpen"></i>
+        <i style="float: left; color: #fff; line-height: 45px;font-size:18px;margin-left: 10px;"
+           class="el-icon-s-fold"
+           @click="handleOpen"></i>
       </el-tooltip>
-
+      <!--全屏-->
       <screenfull id="screenfull" class="right-menu-item hover-effect"/>
 
       <el-dropdown>
@@ -16,30 +17,24 @@
         <el-dropdown-menu slot="dropdown">
         </el-dropdown-menu>
       </el-dropdown>
+      <!--头像-->
       <span>
-        <el-popover
-          placement="top-start"
-          title="标题"
-          width="200"
-          trigger="hover"
-          content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
         <el-avatar :size="24" :src="background" style="vertical-align: middle;margin-right: 10px;"/>
-        </el-popover>
       </span>
-
+      <!--名字-->
       <span class="color-white">admin</span>
 
     </el-header>
     <!--    border-right:thick solid #ff0000;-->
-<!--    <el-container style="background-color: rgb(238, 241, 246)">-->
-    <el-container id="mainCon" style="">
+    <!--    <el-container style="background-color: rgb(238, 241, 246)">-->
+    <el-container  class="ta-maoboli" >
       <el-aside
-        style=" height: 100%;width: auto; box-shadow: 0px 10px 10px;">
+        style=" width: auto; height: auto; box-shadow: 0px 10px 10px;">
         <el-menu
-          style="background-color:#ffffff00;height: 50%"
+          style="background-color:#ffffff00;"
           mode="vertical"
           default-active="home"
-          class="el-menu-vertical"
+          class="el-menu-vertical ta-no-border"
           :collapse="isCollapse"
           @select="handleSelect"
         >
@@ -107,35 +102,26 @@
 
 </template>
 <style>
-body{
-  background: url('../assets/imgs/homebg.jpg');
-
+.el-tabs--bottom .el-tabs--left>.el-tabs__header .el-tabs__item:last-child, .el-tabs--bottom .el-tabs--right>.el-tabs__header .el-tabs__item:last-child, .el-tabs--bottom.el-tabs--border-card>.el-tabs__header .el-tabs__item:last-child, .el-tabs--bottom.el-tabs--card>.el-tabs__header .el-tabs__item:last-child, .el-tabs--top .el-tabs--left>.el-tabs__header .el-tabs__item:last-child, .el-tabs--top .el-tabs--right>.el-tabs__header .el-tabs__item:last-child, .el-tabs--top.el-tabs--border-card>.el-tabs__header .el-tabs__item:last-child, .el-tabs--top.el-tabs--card>.el-tabs__header .el-tabs__item:last-child {
+  padding-right: 10px
 }
-#mainTab{
+
+#mainTab {
   padding: 0px;
-  margin-left:8px;
+  margin-left: 8px;
   height: 100%;
-  box-shadow: 0px 10px 10px ;
-}
-#mainCon{
-  background-color:#ffffffaa;
-}
-body, p {
-  margin: 0;
+  box-shadow: 0px 10px 10px;
 }
 
-.color-white {
-  color: white;
 
-}
 
-body, html, .parent {
-  height: 100%;
-}
 
 .el-header {
-  background-color: #193270;
+  backdrop-filter: blur(10px);
+  background-color: #193270ff;
   line-height: 45px;
+  text-align: right;
+  font-size: 14px;
 }
 
 .el-submenu .el-menu-item {
@@ -157,8 +143,33 @@ body, html, .parent {
   height: calc(100vh - 118px);
   overflow-y: auto;
 }
-.mainContainer{
-  background: image(background);
+
+
+
+.el-tabs--bottom .el-tabs--left>.el-tabs__header .el-tabs__item:last-child, .el-tabs--bottom .el-tabs--right>.el-tabs__header .el-tabs__item:last-child, .el-tabs--bottom.el-tabs--border-card>.el-tabs__header .el-tabs__item:last-child, .el-tabs--bottom.el-tabs--card>.el-tabs__header .el-tabs__item:last-child, .el-tabs--top .el-tabs--left>.el-tabs__header .el-tabs__item:last-child, .el-tabs--top .el-tabs--right>.el-tabs__header .el-tabs__item:last-child, .el-tabs--top.el-tabs--border-card>.el-tabs__header .el-tabs__item:last-child, .el-tabs--top.el-tabs--card>.el-tabs__header .el-tabs__item:last-child {
+  padding-right: 10px
+}
+
+::v-deep .el-tabs__content {
+  overflow: visible;
+}
+::v-deep .el-tabs__item {
+  color: white;
+}
+::v-deep .el-tabs__item.is-active {
+  color: #15cbf3;
+}
+::v-deep .el-icon-arrow-left {
+  color: white;
+}
+::v-deep .el-icon-arrow-right {
+  color: white;
+}
+::v-deep .el-tabs__nav-wrap::after {
+  height: 0;
+}
+::v-deep .el-tabs__active-bar {
+  background-color: #15cbf3;
 }
 
 </style>

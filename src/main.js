@@ -5,8 +5,12 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 //import 'element-ui/lib/theme-chalk/index.css';
+// 新主题
 import './theme/themeA/index.css'
-import './assets/style/global.css'
+// 覆盖主题
+// import './assets/styles/element-ui-reset.scss'
+// 全局参数
+import './assets/styles/global.css'
 import axios from 'axios' //引入axios
 Vue.config.productionTip = false
 Vue.use(ElementUI);

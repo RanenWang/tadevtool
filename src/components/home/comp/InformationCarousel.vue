@@ -1,6 +1,6 @@
 <template>
   <el-carousel :height=height>
-    <el-carousel-item v-for="item in list" :key="item.id">
+    <el-carousel-item v-for="item in list" :key="item.id" >
       <a :href=item.href id="title" target="_blank">
         <el-image
           :src="item.path"

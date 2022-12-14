@@ -1,8 +1,9 @@
 <template>
   <el-row :gutter="12">
-    <el-col :span="12" class="">
+    <el-col :span="12" >
       <el-input
-        :rows=20
+        class="ta-border-radius-10"
+        :rows=32
         type="textarea"
         placeholder="请输入内容"
         @input="changeData"
@@ -10,18 +11,17 @@
       </el-input>
     </el-col>
     <el-col :span="12">
-      <div style="height:600px;overflow:auto;border: 1px solid #e1e1e1;">
-        <!--        <vue-json-pretty :data="jsonData"-->
-        <!--                         highlightMouseoverNode-->
-        <!--                         collapsedOnClickBrackets-->
-        <!--                         showIcon-->
-        <!--        />-->
+      <div style="height:680px; background: white" class="ta-border ta-border-radius-10">
+<!--                <vue-json-pretty :data="jsonData"-->
+<!--                                 highlightMouseoverNode-->
+<!--                                 collapsedOnClickBrackets-->
+<!--                                 showIcon-->
+<!--                />-->
         <json-viewer
-          class="container-main"
+          class=" ta-border-radius-10"
           :value="jsonData"
           :expand-depth=200
           copyable
-
           expanded>
         </json-viewer>
       </div>
@@ -53,10 +53,9 @@ export default {
         this.jsonData = JSON.parse(jsonstr);
       } catch (error) {
         console.log("json转化失败")
-        const h = this.$createElement;
-        this.$notify({
-          title: '提示！',
-          message: h('i', {style: 'color: teal'}, "不是有效的json字符串")
+        this.$message({
+          duration:500,
+          message:'不是有效的json字符串'
         });
       }
 
@@ -65,8 +64,9 @@ export default {
 }
 </script>
 
-<style>
-.el-card__body {
-  padding: 10px;
+<style scoped>
+/deep/ .el-input__inner{
+  height: 600px;
 }
+
 </style>

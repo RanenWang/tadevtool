@@ -3,13 +3,13 @@
     <el-row :gutter="6">
       <el-col :xs="24" :sm="14" :md="16" :lg="16" :xl="16">
         <h1 class="ta-title">TA头条</h1>
-        <el-card shadow="always">
+        <el-card shadow="always" class="ta-maoboli">
           <TouTiao :height="height"/>
         </el-card>
       </el-col>
       <el-col :xs="24" :sm="10" :md="8" :lg="8" :xl="8">
         <h1 class="ta-title">资讯</h1>
-        <el-card shadow="always">
+        <el-card shadow="always" class="ta-maoboli">
           <InformationCarousel :height="height"/>
         </el-card>
       </el-col>

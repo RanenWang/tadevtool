@@ -1,17 +1,26 @@
 <template>
   <el-row :gutter="6">
-    <el-col align="middle" :xs="8" :sm="6" :md="4" :lg="3" :xl="2" v-for="item in list" :key="item.path" >
-      <el-card class="common-height" shadow="always" style="margin-bottom: 6px; " :style="cssVars" >
-        <a :href="item.path" style="width: 100%;"  class="common-height">
-
-          {{item.name}}
-
+    <el-col align="middle" :xs="8" :sm="6" :md="4" :lg="3" :xl="2" v-for="item in list" :key="item.path">
+      <el-card shadow="always" style="margin-bottom: 6px;height: 50px; " :style="cssVars" class="ta-maoboli">
+        <a :href="item.path" style="width: 100%;" class="common-height">
+          <div style="height: 50px;width: 100%;">
+<!--            <div style="height:100%;width: 50px;float: left;">-->
+<!--              <i style="margin:0px 20px 10px 10px;"-->
+<!--                 class="el-icon-video-camera-solid"></i>-->
+<!--            </div>-->
+            <img src="/static/demo/jiazaizhong.jpg" alt="" style="height:30px;width: 30px;float: left;margin:10px;border-radius: 5px;">
+            <div style="height:100%;width: 70px;float: left;text-align: left">
+              {{ item.name }}
+            </div>
+          </div>
         </a>
 
       </el-card>
     </el-col>
   </el-row>
 </template>
+
+<span style="float: left"></span>
 
 <script>
 export default {
@@ -23,10 +32,10 @@ export default {
     return {
       list: [
         {
-          "path":"#/kfdata",
+          "path": "#/kfdata",
           "name": "客服"
-        },{
-          "path":"#/liquidationInterfaceRead",
+        }, {
+          "path": "#/liquidationInterfaceRead",
           "name": "清算"
         }
       ]
@@ -38,9 +47,6 @@ export default {
       this.$http.get('/home/commonuse'
       ).then(res => {
         //res为后端传回来的数据
-        console.log(res.data.data)
-        console.log("解析")
-
         this.list = res.data.data
       }).catch(function (error) {
         console.log(error);
@@ -66,6 +72,8 @@ export default {
 .common-height {
   height: var(--height);
   text-decoration: none;
+  text-align: center;
+  line-height: var(--height);
   color: black;
 }
 </style>

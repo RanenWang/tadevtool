@@ -22,6 +22,9 @@
           <CommonApp :height="appHeight"/>
         <!--        </el-card>-->
       </el-col>
+      <el-col>
+<!--        <div><iframe src ="http://localhost:8089/#/home" width="100%" height="500" frameborder="0"></iframe></div>-->
+      </el-col>
     </el-row>
   </div>
 </template>

@@ -60,7 +60,7 @@
             <template slot="title"><i class="el-icon-menu"></i><span>流程设计</span></template>
             <el-menu-item-group>
               <template slot="title">ta6</template>
-              <el-menu-item index="ta6flowdesign">流程设计</el-menu-item>
+              <el-menu-item index="flowDesign">流程设计</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">

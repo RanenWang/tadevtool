@@ -14,6 +14,7 @@ import CentralizedBackup from "../components/interfaceread/subpage/CentralizedBa
 import ConfirmData from "../components/interfaceread/subpage/ConfirmData";
 import KfData from "../components/interfaceread/subpage/KfData";
 import LiquidationInterfaceRead from "../components/interfaceread/subpage/LiquidationInterfaceRead";
+import FlowDesign from "../components/flowdesign/FlowDesign";
 Vue.use(JsonViewer)
 Vue.use(Router)
 // 保存原来的push方法
@@ -127,6 +128,13 @@ export default new Router({
           },
           path: 'jsonformat',
           component: JsonFormat
+        },{
+          meta: {
+            name: 'flowDesign',
+            title: '6.0流程设计',
+          },
+          path: 'flowDesign',
+          component: FlowDesign
         }
       ]
     },

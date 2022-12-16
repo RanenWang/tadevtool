@@ -32,6 +32,11 @@ Router.prototype.push = function (location, resolve, reject) {
 export default new Router({
   routes: [
     {
+      path: '/login',
+      component: () => import('@/views/login/index'),
+      hidden: true
+    },
+    {
       path: '/',
       name: 'Main',
       component: Main,
@@ -140,7 +145,7 @@ export default new Router({
     },
     {
       path: '/404',
-      component: () => import('@/components/404/NotFound'),
+      component: () => import('../views/error-page/404'),
       hidden: true
     },
     {

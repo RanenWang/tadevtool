@@ -2,7 +2,7 @@
   <el-container id="mainContainer" style="height: 100%; ">
     <el-header height="45px">
       <!--标题-->
-      <a style="float: left;" class="color-white">TA development tool</a>
+      <a style="float: left;" class="color-white">{{title}}</a>
       <!--展开或收起来-->
       <el-tooltip class="item" effect="dark" content="点击此处，展开或收起" placement="top">
         <i style="float: left; color: #fff; line-height: 45px;font-size:18px;margin-left: 10px;"
@@ -113,9 +113,6 @@
   box-shadow: 0px 10px 10px;
 }
 
-
-
-
 .el-header {
   backdrop-filter: blur(10px);
   background-color: #193270ff;
@@ -179,13 +176,13 @@
 import bg from '../assets/imgs/homebg.jpg';
 
 import Screenfull from './components/Screenfull'
-
 export default {
   components: {
     Screenfull
   },
   data() {
     return {
+      title: this.$defaultSettings.title,
       background: bg,
       isCollapse: true,
       activeIndex: '/home',
